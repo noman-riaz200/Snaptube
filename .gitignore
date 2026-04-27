@@ -1,0 +1,15 @@
+# Ignore uploads directory contents but keep .htaccess
+uploads/*
+!uploads/.htaccess
+
+# Ignore sensitive config file
+config.php
+
+# Ignore environment-specific files
+.env
+
+# Ignore OS and editor files
+.DS_Store
+Thumbs.db
+*.log
+

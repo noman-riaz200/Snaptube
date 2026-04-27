@@ -20,7 +20,7 @@ require_once __DIR__ . '/header.php';
         <h1>Snaptube Download Official APK — Free Video Downloader for Android</h1>
         <p class="hero-desc">Get the official SnapTube APK download for your Android device. Fast, safe, and easy way to download videos and music from YouTube, Facebook, Instagram, and 50+ sites. Safe APK install trusted by 900M+ happy users.</p>
         <div class="download-btn-wrap">
-          <a href="<?php echo $downloadUrl; ?>" class="download-btn" rel="nofollow noopener" target="_blank" download>
+          <a href="<?php echo $downloadUrl; ?>" class="download-btn" rel="nofollow noopener" download="snaptube.apk">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" width="24" height="24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
             Download SnapTube
           </a>

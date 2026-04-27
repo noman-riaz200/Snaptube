@@ -2,14 +2,18 @@
 <FilesMatch "\.(php|php\.|php3|php4|php5|phtml|pl|py|jsp|asp|aspx|cgi|sh|bash)$">
     Order allow,deny
     Deny from all
+    Require all denied
 </FilesMatch>
 
 # Deny access to .htaccess itself
 <Files .htaccess>
     Order allow,deny
     Deny from all
+    Require all denied
 </Files>
 
-# Disable PHP engine
-php_flag engine off
+# Disable PHP engine (Apache mod_php only; safe-guarded for PHP-FPM/CGI)
+<IfModule mod_php.c>
+    php_flag engine off
+</IfModule>
 

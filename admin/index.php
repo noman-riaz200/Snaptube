@@ -44,14 +44,47 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 if ($ext !== 'apk') {
                     $error = 'Only APK files are allowed.';
                 } else {
-                    $safeName = 'snaptube_' . time() . '.apk';
-                    $destPath = __DIR__ . '/../uploads/' . $safeName;
+                    $uploadDir = __DIR__ . '/../uploads';
 
-                    if (move_uploaded_file($file['tmp_name'], $destPath)) {
-                        $data['download_url']  = '';
-                        $data['apk_file_path'] = 'uploads/' . $safeName;
-                    } else {
-                        $error = 'Failed to upload APK file. Please try again.';
+                    // 1) Ensure uploads/ directory exists and is writable
+                    if (!is_dir($uploadDir)) {
+                        if (!mkdir($uploadDir, 0755, true)) {
+                            $error = 'Uploads directory does not exist and could not be created.';
+                            debugLog('Upload error: mkdir failed for ' . $uploadDir);
+                        }
+                    } elseif (!is_writable($uploadDir)) {
+                        $error = 'Uploads directory is not writable. Check folder permissions.';
+                        debugLog('Upload error: directory not writable: ' . $uploadDir);
+                    }
+
+                    if (empty($error)) {
+                        $safeName = 'snaptube_' . time() . '.apk';
+                        $destPath = $uploadDir . '/' . $safeName;
+
+                        // 2) Move the uploaded file
+                        if (move_uploaded_file($file['tmp_name'], $destPath)) {
+                            // 3) Verify the file actually exists and is readable
+                            if (file_exists($destPath) && is_readable($destPath)) {
+                                // 4) Delete previous APK to avoid clutter (optional but recommended)
+                                $oldPath = getSetting('apk_file_path');
+                                if ($oldPath) {
+                                    $oldFull = __DIR__ . '/../' . ltrim($oldPath, '/\\');
+                                    if (file_exists($oldFull) && $oldFull !== $destPath) {
+                                        @unlink($oldFull);
+                                    }
+                                }
+
+                                $data['download_url']  = '';
+                                $data['apk_file_path'] = 'uploads/' . $safeName;
+                                debugLog('Upload success: saved to ' . $destPath . ' (' . filesize($destPath) . ' bytes)');
+                            } else {
+                                $error = 'File was moved but is not readable on the server.';
+                                debugLog('Upload error: file missing after move. Destination: ' . $destPath);
+                            }
+                        } else {
+                            $error = 'Failed to move uploaded APK file. Check directory permissions.';
+                            debugLog('Upload error: move_uploaded_file returned false. Tmp: ' . $file['tmp_name'] . ' Dest: ' . $destPath);
+                        }
                     }
                 }
             } else {

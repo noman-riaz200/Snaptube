@@ -78,11 +78,20 @@
     lastScroll = currentScroll;
   });
 
-  // ========== Download Button Tracking ==========
+  // ========== Download Button Tracking & Debug ==========
   const downloadBtn = document.querySelector('.download-btn');
   if (downloadBtn) {
-    downloadBtn.addEventListener('click', () => {
-      console.log('Download initiated');
+    const btnHref = downloadBtn.getAttribute('href');
+    console.log('[SnapTube Debug] Download button href:', btnHref);
+
+    if (!btnHref || btnHref === '' || btnHref === 'http://' || btnHref === 'https://') {
+      console.warn('[SnapTube Debug] WARNING: Download button has an empty or invalid href!');
+    } else if (!btnHref.includes('download.php') && !btnHref.endsWith('.apk')) {
+      console.warn('[SnapTube Debug] WARNING: Download link does not point to an APK or the download handler.');
+    }
+
+    downloadBtn.addEventListener('click', (e) => {
+      console.log('[SnapTube Debug] Download click detected. Navigating to:', btnHref);
     });
   }
 

@@ -8,8 +8,7 @@ require_once __DIR__ . '/config.php';
 
 // Fetch all settings once
 $version     = e(getSetting('app_version'));
-$apkFilePath = getSetting('apk_file_path');
-$downloadUrl = e($apkFilePath ?: getSetting('download_url'));
+$downloadUrl = e(getDownloadLink());
 $metaTitle   = e(getSetting('meta_title'));
 $metaDesc    = e(getSetting('meta_description'));
 $seoKeywords = e(getSetting('seo_keywords'));

@@ -1,0 +1,44 @@
+name: 🚀 Deploy to InfinityFree via FTP
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    name: Deploy to InfinityFree
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 📥 Checkout repository
+        uses: actions/checkout@v4
+
+      - name: 🚀 Deploy to InfinityFree via FTP
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          server-dir: ${{ secrets.FTP_REMOTE_DIR }}
+          protocol: ftps-legacy
+          port: 21
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/node_modules/**
+            **/vendor/**
+            **/README*
+            **/database.sql
+            **/*.log
+            **/.env
+            **/config.php
+            **/uploads/*
+            !**/uploads/.htaccess
+            **/.github/**
+            **/TODO.md
+            **/check-upload.php
+          dangerous-clean-slate: false
+          log-level: verbose
+

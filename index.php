@@ -5,7 +5,7 @@
  * keyword-rich content, lazy-loaded images, FAQ microdata.
  */
 
-require_once __DIR__ . '/header.php';
+require_once __DIR__ . 'htdocs/header.php';
 ?>
 
 <main>

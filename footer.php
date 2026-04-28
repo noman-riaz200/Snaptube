@@ -28,16 +28,16 @@
       <div class="footer-links">
         <h3>Legal</h3>
         <ul>
-          <li><a href="#">Privacy Policy</a></li>
-          <li><a href="#">Terms of Service</a></li>
-          <li><a href="#">DMCA</a></li>
+          <li><a href="privacy-policy.php">Privacy Policy</a></li>
+          <li><a href="terms-of-service.php">Terms of Service</a></li>
+          <li><a href="dmca.php">DMCA</a></li>
         </ul>
       </div>
       <div class="footer-links">
         <h3>Support</h3>
         <ul>
           <li><a href="contact.php">Contact Us</a></li>
-          <li><a href="#">Report a Bug</a></li>
+          <li><a href="report-a-bug.php">Report a Bug</a></li>
           <li><a href="admin/login.php">Admin</a></li>
         </ul>
       </div>

@@ -5,7 +5,7 @@
  * keyword-rich content, lazy-loaded images, FAQ microdata.
  */
 
-require_once __DIR__ . 'htdocs/header.php';
+require_once __DIR__ . '/header.php';
 ?>
 
 <main>
@@ -287,25 +287,25 @@ require_once __DIR__ . 'htdocs/header.php';
       <div class="footer-links">
         <h3>Quick Links</h3>
         <ul>
-          <li><a href="#features">Features</a></li>
-          <li><a href="#comparison">Comparison</a></li>
-          <li><a href="#install">How to Install</a></li>
-          <li><a href="#faq">FAQ</a></li>
+          <li><a href="features.php">Features</a></li>
+          <li><a href="comparison.php">Comparison</a></li>
+          <li><a href="how-to-install.php">How to Install</a></li>
+          <li><a href="faq.php">FAQ</a></li>
         </ul>
       </div>
       <div class="footer-links">
         <h3>Legal</h3>
         <ul>
-          <li><a href="#">Privacy Policy</a></li>
-          <li><a href="#">Terms of Service</a></li>
-          <li><a href="#">DMCA</a></li>
+          <li><a href="privacy-policy.php">Privacy Policy</a></li>
+          <li><a href="terms-of-service.php">Terms of Service</a></li>
+          <li><a href="dmca.php">DMCA</a></li>
         </ul>
       </div>
       <div class="footer-links">
         <h3>Support</h3>
         <ul>
-          <li><a href="#">Contact Us</a></li>
-          <li><a href="#">Report a Bug</a></li>
+          <li><a href="contact.php">Contact Us</a></li>
+          <li><a href="report-a-bug.php">Report a Bug</a></li>
           <li><a href="admin/login.php">Admin</a></li>
         </ul>
       </div>

@@ -1,0 +1,15 @@
+User-agent: *
+Allow: /
+
+# Disallow admin and sensitive areas
+Disallow: /admin/
+Disallow: /assets/
+Disallow: /uploads/
+Disallow: /config.php
+Disallow: /database.sql
+Disallow: /check-upload.php
+Disallow: /debug.log
+
+# Point crawlers to the XML sitemap
+Sitemap: sitemap.xml
+

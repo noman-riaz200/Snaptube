@@ -25,6 +25,12 @@
     RewriteCond %{REQUEST_FILENAME}.php -f
     RewriteRule ^(.*)$ $1.php [L]
 
+    # Sitemap.xml to sitemap.php rewrite
+    RewriteRule ^sitemap\.xml$ sitemap.php [L]
+
+    # Pretty URLs for dynamic pages (page/slug -> page.php?slug=slug)
+    RewriteRule ^page/([^/]+)$ page.php?slug=$1 [L,QSA]
+
     # Protect sensitive files
     RewriteRule ^(config\.php|database\.sql) - [F,L]
 

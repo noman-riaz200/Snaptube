@@ -27,15 +27,7 @@ require_once __DIR__ . '/header.php';
         </div>
         <p style="font-size:0.875rem;color:var(--text-light);">✓ Free &bull; ✓ No Registration &bull; ✓ Virus Free &bull; Updated <?php echo date('F Y', strtotime($updatedAt)); ?></p>
       </div>
-      <div class="mockup reveal">
-        <!-- Hero mockup: above the fold, no lazy loading -->
-        <div class="mockup-phone">
-          <div class="mockup-notch"></div>
-          <div class="mockup-screen" role="img" aria-label="SnapTube app interface preview on Android smartphone">
-            <span style="z-index:2"><?php echo $siteName; ?></span>
-          </div>
-        </div>
-      </div>
+      <img src="assets/images/hero-img.png" alt="SnapTube app preview" class="mockup reveal" />
     </div>
   </section>
 

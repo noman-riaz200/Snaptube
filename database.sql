@@ -22,6 +22,28 @@ CREATE TABLE site_settings (
 INSERT INTO site_settings (id, app_version, download_url, apk_file_path, meta_title, meta_description, seo_keywords, site_name)
 VALUES (1, '7.29.0.729', 'https://www.snaptube.com/latest/snaptube-official.apk', '', 'SnapTube Download Official APK - Free Video Downloader for Android', 'Download SnapTube APK for free. Fast, safe, and easy video & music downloader for Android. 900M+ users trust SnapTube. Get the latest official version now!', 'SnapTube APK, video downloader, free video downloader, Android video downloader, SnapTube download, MP3 downloader, YouTube downloader, HD video downloader', 'SnapTube');
 
+-- ============================================================
+-- Pages table for dynamic sitemap generation
+-- ============================================================
+DROP TABLE IF EXISTS pages;
+CREATE TABLE pages (
+    id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    slug VARCHAR(100) NOT NULL UNIQUE,
+    title VARCHAR(150) NOT NULL,
+    meta_description VARCHAR(300) DEFAULT '',
+    content TEXT,
+    is_active TINYINT(1) NOT NULL DEFAULT 1,
+    priority DECIMAL(2,1) NOT NULL DEFAULT 0.5,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- Sample active pages (optional — remove if not needed)
+INSERT INTO pages (slug, title, meta_description, content, is_active, priority)
+VALUES
+('privacy-policy', 'Privacy Policy', 'Read the privacy policy for SnapTube APK download.', 'This is the privacy policy page.', 1, 0.3),
+('terms-of-service', 'Terms of Service', 'Read the terms of service for using SnapTube.', 'This is the terms of service page.', 1, 0.3);
+
 -- Admin credentials table (lightweight, no full user system)
 DROP TABLE IF EXISTS admin_users;
 CREATE TABLE admin_users (
